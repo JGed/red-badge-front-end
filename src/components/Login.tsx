@@ -37,8 +37,10 @@ class Login extends React.Component<LoginProps, LoginState> {
             })        
             console.log(status, json);
             if(status === 200) {
-                if(this.props.auth.setAuth) this.props.auth.setAuth(json.sessionToken, json.role);
-                this.props.history.push('/')
+                if(this.props.auth.setAuth) {
+                    this.props.auth.setAuth(json.sessionToken, json.role);
+                }
+                this.props.history.push('/');
             }
         }
         catch(err) {

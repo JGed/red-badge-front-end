@@ -1,11 +1,22 @@
 import React from 'react';
-
-class AdminPage extends React.Component {
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import { AuthContext } from '../context';
+import Admin from '../components/Admin';
+class AdminPage extends React.Component<any , any> {
     render() {
         return (
-            <div>
 
-            </div>
+            <AuthContext.Consumer>
+                {auth => 
+                    <>
+                        <Navbar auth={auth} history={this.props.history} />
+                        <Admin auth={auth} />
+                        <Footer auth={auth} />
+
+                    </> 
+                }
+            </AuthContext.Consumer>
         )
     }
 }
