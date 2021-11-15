@@ -1,24 +1,22 @@
 import { Grid, Typography } from '@mui/material';
-import React from 'react'
-import { Redirect } from 'react-router';
-import getTopGames from '../api/game/getTopGames';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import MainContentContainer from './containers/MainContentContainer';
 import GameCard from './GameCard';
-
-class Home extends React.Component<any, any> {
+import getGamesByPlatform from '../api/game/getGamesByPlatform';
+class GamePlatform extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
             games: [],
-        };
+        }
     }
-
     componentDidMount() {
         (async () => {
-            const { status, json } = await getTopGames(this.props.auth)
+            const { status, json } = await getGamesByPlatform(this.props.auth, this.props.platform);
             console.log(status, json);
             if(status === 200) {
-                this.setState({ games: json.games });
+                this.setState({games: json.games})
             }
         })();
     }
@@ -29,7 +27,7 @@ class Home extends React.Component<any, any> {
             :
             <MainContentContainer>
                 <Typography variant='h2' align='center' sx={{pb: 2}}>
-                    Top Games:
+                    {this.props.platform[0].toUpperCase() + this.props.platform.substring(1)} Games:
                 </Typography>
                 <Grid container spacing={4} sx={{py: 3}}>
                {
@@ -43,4 +41,4 @@ class Home extends React.Component<any, any> {
     }
 }
 
-export default Home;
+export default GamePlatform;

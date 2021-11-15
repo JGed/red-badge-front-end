@@ -1,0 +1,12 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #105493;
+    border-bottom: 1px solid #105493;
+    cursor: pointer;
+    font-size: 1.1em;
+}

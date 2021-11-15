@@ -1,11 +1,14 @@
 export interface IAPIResponse {
     status: number;
-    json: Object;
+    error?: any; 
+    json: any;
 }
 
 export interface IAuth {
     token?: string;
     role?: string;
+    setAuth?: (token: string, role: string) => void;
+    removeAuth?: () => void;
 }
 
 export interface IReview {
@@ -16,6 +19,14 @@ export interface IReview {
     text: string;
 }
 
+export interface IReport {
+    id?: number;
+    userId?: number;
+    reviewId: number;
+    reason: string;
+    status?: string;
+    handledBy?: number;
+}
 export interface IGame {
     id?: number;
     title: string;
@@ -23,4 +34,10 @@ export interface IGame {
     genre: string;
     releaseDate: Date;
     rating?: number
+}
+
+export interface IUser {
+    username: string;
+    password: string;
+    email?: string;
 }

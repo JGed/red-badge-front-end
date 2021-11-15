@@ -1,0 +1,11 @@
+export { default as createReview } from './review/createReview';
+export { default as updateReview } from './review/updateReview';
+export { default as deleteReview } from './review/deleteReview';
+export { default as createGame } from './game/createGame';
+export { default as updateGame } from './game/updateGame';
+export { default as deleteGame } from './game/deleteGame';
+export { default as getGameById } from './game/getGameById';
+export { default as createUser } from './user/createUser';
+export { default as loginUser } from './user/loginUser';
+export { default as createReport } from './report/createReport';
+export { default as updateReport } from './report/updateReport';

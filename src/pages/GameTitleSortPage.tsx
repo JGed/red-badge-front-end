@@ -1,23 +1,24 @@
-import React from 'react'
-import { AuthContext } from '../context';
-import Navbar from '../components/Navbar';
-import Profile from '../components/Profile';
+import React from 'react';
 import Footer from '../components/Footer';
-class ProfilePage extends React.Component<any, any> {
+import GameTitle from '../components/GameTitle';
+import Navbar from '../components/Navbar';
+import { AuthContext } from '../context';
+
+class GameTitleSortPage extends React.Component<any, any> {
     render() {
         return (
+
             <AuthContext.Consumer>
                 {auth => 
                     <>
                         <Navbar auth={auth} history={this.props.history}/>
-                        <Profile auth={auth} />
+                        <GameTitle auth={auth} platform={this.props.match?.params.title} />
                         <Footer auth={auth} />
                     </>
                 }
             </AuthContext.Consumer>
-
         )
     }
 }
 
-export default ProfilePage;
+export default GameTitleSortPage;

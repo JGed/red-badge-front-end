@@ -1,11 +1,21 @@
 import React from 'react'
-
-class LoginPage extends React.Component {
+import Login from '../components/Login';
+import Navbar from '../components/Navbar';
+import { AuthContext } from '../context';
+class LoginPage extends React.Component<any, any> {
     render() {
+    console.log(this.props);
         return (
-            <div>
-                login
-            </div>
+            <>
+            <AuthContext.Consumer>
+                {auth => 
+                    <>
+                        <Login auth={auth} history={this.props.history}/>
+                    </>
+                }
+            </AuthContext.Consumer>
+                
+            </>
         )
     }
 }

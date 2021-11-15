@@ -1,24 +1,22 @@
-import { Grid, Typography } from '@mui/material';
-import React from 'react'
+import { Typography, Grid } from '@mui/material';
+import React from 'react';
 import { Redirect } from 'react-router';
-import getTopGames from '../api/game/getTopGames';
+import getGamesByGenre from '../api/game/getGamesbyGenre';
 import MainContentContainer from './containers/MainContentContainer';
 import GameCard from './GameCard';
 
-class Home extends React.Component<any, any> {
+class GameGenre extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            games: [],
-        };
+            games: []
+        }
     }
-
     componentDidMount() {
         (async () => {
-            const { status, json } = await getTopGames(this.props.auth)
-            console.log(status, json);
+            const { status, json } = await getGamesByGenre(this.props.auth, this.props.genre);
             if(status === 200) {
-                this.setState({ games: json.games });
+                this.setState({games: json.games})
             }
         })();
     }
@@ -29,7 +27,7 @@ class Home extends React.Component<any, any> {
             :
             <MainContentContainer>
                 <Typography variant='h2' align='center' sx={{pb: 2}}>
-                    Top Games:
+                    {this.props.genre[0].toUpperCase() + this.props.genre.substring(1)} Games:
                 </Typography>
                 <Grid container spacing={4} sx={{py: 3}}>
                {
@@ -43,4 +41,4 @@ class Home extends React.Component<any, any> {
     }
 }
 
-export default Home;
+export default GameGenre;

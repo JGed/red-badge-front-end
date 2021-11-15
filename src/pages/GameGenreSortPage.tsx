@@ -1,23 +1,22 @@
-import React from 'react'
+import React from 'react';
 import { AuthContext } from '../context';
 import Navbar from '../components/Navbar';
-import Profile from '../components/Profile';
+import GameGenre from '../components/GameGenre';
 import Footer from '../components/Footer';
-class ProfilePage extends React.Component<any, any> {
+class GameGenreSortPage extends React.Component<any> {
     render() {
         return (
             <AuthContext.Consumer>
                 {auth => 
                     <>
-                        <Navbar auth={auth} history={this.props.history}/>
-                        <Profile auth={auth} />
+                        <Navbar auth={auth} history={this.props.history} />
+                        <GameGenre auth={auth} genre={this.props.match?.params.genre} />
                         <Footer auth={auth} />
                     </>
                 }
             </AuthContext.Consumer>
-
         )
     }
 }
 
-export default ProfilePage;
+export default GameGenreSortPage;

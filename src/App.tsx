@@ -9,40 +9,51 @@ import ProfilePage from './pages/ProfilePage';
 import ReviewPage from './pages/ReviewPage';
 import ModeratorPage from './pages/ModeratorPage';
 import AdminPage from './pages/AdminPage';
-import { IAuth } from './interfaces';
-
-class App extends React.Component<{} , IAuth> {
+import { AuthContext } from './context';
+import GamePlatformSortPage from './pages/GamePlatformSortPage';
+import GameTitleSortPage from './pages/GameTitleSortPage';
+import GameGenreSortPage from './pages/GameGenreSortPage';
+class App extends React.Component<any , any> {
   constructor(props: {}) {
     super(props);
-    this.state = {};
+    this.state = {
+      token: '',
+      role: ''
+    };
   }
 
-  setAuth(newAuth: IAuth) {
-    this.setState({ ...newAuth })
+  setAuth = (token: string, role: string) =>  {
+    localStorage.setItem('token', token);
+    localStorage.setItem('role', role);
+    this.setState({ token: token, role: role })
   }
-  removeAuth() {
-    this.setState({token: undefined, role: undefined})
+  removeAuth = () => {
+    this.setState({token: '', role: ''})
+  }
+  componentDidMount() {
+    if(localStorage.getItem('token')) this.setState({token: localStorage.getItem('token')});
+    if(localStorage.getItem('role')) this.setState({role: localStorage.getItem('role')});
   }
   render() {
     return (
       <AppContainer>
-        <Router>
-          <Switch>
-            <Route exact path='/'>
-              {this.state.token ? <HomePage /> : <Redirect to='login' />}
-            </Route>
-            <Route exact path='/login'>
-              <LoginPage />
-            </Route>
-            <Route exact path='/profile'>
-              {this.state.token ? <ProfilePage /> : <Redirect to='login' />}
-            </Route>
-            <Route exact path='/moderator' component={ModeratorPage} />
-            <Route exact path='/admin' component={AdminPage} />
-            <Route exact path='/game/:id' component={GamePage} />
-            <Route exact path='/review/:id' component={ReviewPage} />
-          </Switch>
-        </Router>
+        <AuthContext.Provider value={{token: this.state.token, role: this.state.role, setAuth: this.setAuth, removeAuth: this.removeAuth}}>
+          <Router>
+            <Switch>
+              <Route exact path='/' component={HomePage} />
+              <Route exact path='/login' component={LoginPage} />
+              <Route exact path='/profile' component={ProfilePage} />
+              <Route exact path='/moderator' component={ModeratorPage} />
+              <Route exact path='/admin' component={AdminPage} />
+              <Route exact path='/game/id/:id' component={GamePage} />
+              <Route exact path='/review/:id' component={ReviewPage} />
+              <Route exact path='/game/platform/:platform' component={GamePlatformSortPage} />
+              <Route exact path='/game/genre/:genre' component={GameGenreSortPage} />
+              <Route exact path='/game/title/:title' component={GameTitleSortPage} />
+              <Route exact path='/game/id/:id' component={GamePage} />
+            </Switch>
+          </Router>
+        </AuthContext.Provider>
       </AppContainer>
     );
   }
