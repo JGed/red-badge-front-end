@@ -5,7 +5,9 @@ switch(window.location.hostname) {
     case '127.0.0.1':
         APIURL = 'http://localhost:3000';
         break;
-    // TODO
+    case 'jbg-vg-reviews-back.herokuapp.com/':
+        APIURL = 'https://jbg-vg-reviews-back.herokuapp.com/';
+        break;
     default: 
         break;
 }

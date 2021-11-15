@@ -33,7 +33,8 @@ export interface IGame {
     platform: string;
     genre: string;
     releaseDate: Date;
-    rating?: number
+    rating?: number;
+    photoURL?: string;
 }
 
 export interface IUser {
