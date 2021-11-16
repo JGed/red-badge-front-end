@@ -2,7 +2,7 @@ import React from 'react';
 import { createUser, loginUser } from '../api';
 import { IAuth } from '../interfaces';
 import MainContentContainer from './containers/MainContentContainer';
-import { Grid, Box, Typography, Stack, TextField, Button } from '@mui/material';
+import { Grid, Box, Typography, Stack, TextField, Button, Container } from '@mui/material';
 import { Redirect } from 'react-router-dom';
 interface LoginProps {
     auth: IAuth,
@@ -70,6 +70,17 @@ class Login extends React.Component<LoginProps, LoginState> {
             this.props.auth.role !== '' ? <Redirect to='/' /> : 
             <>
             <MainContentContainer>
+                <Typography variant='h1' align='center'>
+                    Video Game Reviews
+                </Typography>
+                <br />
+                <Container>
+                <Typography variant='h6' align='center'>
+                    Welcome new and existing users, since all our reviews are user created we ask that all visitors create an account.  Please report reviews that contain innapropriate content and include a reason to help our Moderators.  Thank You!
+                </Typography>
+                </Container>
+                <br />
+                <br />
                 <Grid 
                     container 
                 >
