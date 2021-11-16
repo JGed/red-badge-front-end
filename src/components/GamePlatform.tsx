@@ -20,6 +20,15 @@ class GamePlatform extends React.Component<any, any> {
             }
         })();
     }
+    componentDidUpdate() {
+        (async () => {
+            const { status, json } = await getGamesByPlatform(this.props.auth, this.props.platform);
+            console.log(status, json);
+            if(status === 200) {
+                this.setState({games: json.games})
+            }
+        })();
+    }
     render() {
         return (
             this.props.auth.role === '' ? 
