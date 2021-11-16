@@ -11,51 +11,7 @@ const seed = async () => {
 
         // [{name: 'PS5', id: 167}, {name: 'PS4', id: 48}, {name: 'XONE', id: 49}, {name: 'XSX', id: 169}]) {
 
-        const tresponse5 = await fetch(
-            'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games',
-            {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Client-ID': 'ggr8i4wd68qwqk6xahsj12kzt433y1',
-                    Authorization: 'Bearer mc2pq9jvuwd6isn6apyqxhvi1o43ve',
-                },
-                body: `fields name, cover, platforms, genres; where version_parent = null & platforms = ${48};`,
-            }
-        );
-        const tjson5 = await tresponse5.json();
-        for (const game of tjson5) {
-            const tresponse2 = await fetch(
-                'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/genres',
-                {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Client-ID': 'ggr8i4wd68qwqk6xahsj12kzt433y1',
-                        Authorization: 'Bearer mc2pq9jvuwd6isn6apyqxhvi1o43ve',
-                    },
-                    body: `fields name; where id= ${game.genres?.[0] ?? 0};`,
-                }
-            );
-            const tjson2 = await tresponse2.json();
-            const genre = tjson2[0]?.name;
-            console.log(game, genre);
-            await fetch(`${APIURL}/game/`, {
-                method: 'POST',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    Authorization: adminAuth.token,
-                }),
-                body: JSON.stringify({
-                    game: {
-                        title: game.name,
-                        platform: 'PS4',
-                        genre: genre,
-                    },
-                }),
-            });
-        }
-
+        try {
         const tresponse6 = await fetch(
             'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games',
             {
@@ -83,7 +39,7 @@ const seed = async () => {
                 }
             );
             const tjson2 = await tresponse2.json();
-            const genre = tjson2[0].name;
+            const genre = tjson2[0]?.name;
             console.log(game, genre);
             await fetch(`${APIURL}/game/`, {
                 method: 'POST',
@@ -100,6 +56,11 @@ const seed = async () => {
                 }),
             });
         }
+    }
+    catch(e) {
+
+    }
+    try {
 
         const tresponse7 = await fetch(
             'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games',
@@ -148,6 +109,10 @@ const seed = async () => {
             console.log(message);
         }
 
+    }
+    catch(e) {
+
+    }
         //         const response = await fetch(`${APIURL}/game/photo/cloudsign`, {
         //             method: 'GET',
         //             headers: new Headers({
