@@ -4,8 +4,9 @@ import logo from '../logo.png';
 import SelectInput from '@mui/material/Select/SelectInput';
 const seed = async () => {
     try {
-        const { json } = await loginUser({
-            username: 'moderator',
+        const { json } = await createUser({
+            username: 'admin',
+            email: 'admin@gmail.com',
             password: 'password',
         });
         const adminAuth = { token: json.sessionToken };
