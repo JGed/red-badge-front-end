@@ -20,13 +20,15 @@ class GameGenre extends React.Component<any, any> {
             }
         })();
     }
-    componentDidUpdate() {
-        (async () => {
-            const { status, json } = await getGamesByGenre(this.props.auth, this.props.genre);
-            if(status === 200) {
-                this.setState({games: json.games})
-            }
-        })();
+    componentDidUpdate(prevProps: any) {
+        if(prevProps.genre !== this.props.genre) {
+            (async () => {
+                const { status, json } = await getGamesByGenre(this.props.auth, this.props.genre);
+                if(status === 200) {
+                    this.setState({games: json.games})
+                }
+            })();
+        }
     }
     render() {
         return (

@@ -19,6 +19,16 @@ class GameTitle extends React.Component<any, any> {
             }
         })();
     }
+    componentDidUpdate(prevProps: any) {
+        if(prevProps.title !== this.props.title) {
+            (async () => {
+                const { status, json } = await getGamesByTitle(this.props.auth, this.props.title);
+                if(status === 200) {
+                    this.setState({games: json.games})
+                }
+            })();
+        }
+    }
     render() {
         return (
             this.props.auth.role === '' ? 

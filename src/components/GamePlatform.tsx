@@ -9,44 +9,53 @@ class GamePlatform extends React.Component<any, any> {
         super(props);
         this.state = {
             games: [],
-        }
+        };
     }
     componentDidMount() {
         (async () => {
-            const { status, json } = await getGamesByPlatform(this.props.auth, this.props.platform);
+            const { status, json } = await getGamesByPlatform(
+                this.props.auth,
+                this.props.platform
+            );
             console.log(status, json);
-            if(status === 200) {
-                this.setState({games: json.games})
+            if (status === 200) {
+                this.setState({ games: json.games });
             }
         })();
     }
-    componentDidUpdate() {
-        (async () => {
-            const { status, json } = await getGamesByPlatform(this.props.auth, this.props.platform);
-            console.log(status, json);
-            if(status === 200) {
-                this.setState({games: json.games})
-            }
-        })();
+    componentDidUpdate(prevProps: any) {
+        if (prevProps.platform !== this.props.platform) {
+            (async () => {
+                const { status, json } = await getGamesByPlatform(
+                    this.props.auth,
+                    this.props.platform
+                );
+                console.log(status, json);
+                if (status === 200) {
+                    this.setState({ games: json.games });
+                }
+            })();
+        }
     }
     render() {
-        return (
-            this.props.auth.role === '' ? 
-            <Redirect to='/login' />
-            :
+        return this.props.auth.role === '' ? (
+            <Redirect to="/login" />
+        ) : (
             <MainContentContainer>
-                <Typography variant='h2' align='center' sx={{pb: 2}}>
-                    {this.props.platform[0].toUpperCase() + this.props.platform.substring(1)} Games:
+                <Typography variant="h2" align="center" sx={{ pb: 2 }}>
+                    {this.props.platform[0].toUpperCase() +
+                        this.props.platform.substring(1)}{' '}
+                    Games:
                 </Typography>
-                <Grid container spacing={4} sx={{py: 3}}>
-               {
-                   this.state.games.map((game: { id: React.Key | null | undefined; }) => (
-                       <GameCard key={game.id} game={game} />
-                   ))
-               } 
-               </Grid>
+                <Grid container spacing={4} sx={{ py: 3 }}>
+                    {this.state.games.map(
+                        (game: { id: React.Key | null | undefined }) => (
+                            <GameCard key={game.id} game={game} />
+                        )
+                    )}
+                </Grid>
             </MainContentContainer>
-        )
+        );
     }
 }
 
