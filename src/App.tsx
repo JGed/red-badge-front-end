@@ -13,6 +13,7 @@ import { AuthContext } from './context';
 import GamePlatformSortPage from './pages/GamePlatformSortPage';
 import GameTitleSortPage from './pages/GameTitleSortPage';
 import GameGenreSortPage from './pages/GameGenreSortPage';
+import seed from './api/seed'
 class App extends React.Component<any , any> {
   constructor(props: {}) {
     super(props);
@@ -31,6 +32,7 @@ class App extends React.Component<any , any> {
     this.setState({token: '', role: ''})
   }
   componentDidMount() {
+    // seed();
     if(localStorage.getItem('token')) this.setState({token: localStorage.getItem('token')});
     if(localStorage.getItem('role')) this.setState({role: localStorage.getItem('role')});
   }
