@@ -69,7 +69,6 @@ const seed = async () => {
             }
         );
         const tjson6 = await tresponse6.json();
-        console.log(tjson);
         for (const game of tjson6) {
             const tresponse2 = await fetch(
                 'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/genres',
