@@ -34,7 +34,7 @@ const seed = async () => {
                         'Client-ID': 'ggr8i4wd68qwqk6xahsj12kzt433y1',
                         Authorization: 'Bearer mc2pq9jvuwd6isn6apyqxhvi1o43ve',
                     },
-                    body: `fields name; where id= ${game.genres[0] ?? 0};`,
+                    body: `fields name; where id= ${game.genres?.[0] ?? 0};`,
                 }
             );
             const tjson2 = await tresponse2.json();
@@ -79,7 +79,7 @@ const seed = async () => {
                         'Client-ID': 'ggr8i4wd68qwqk6xahsj12kzt433y1',
                         Authorization: 'Bearer mc2pq9jvuwd6isn6apyqxhvi1o43ve',
                     },
-                    body: `fields name; where id= ${game.genres[0] ?? 0};`,
+                    body: `fields name; where id= ${game.genres?.[0] ?? 0};`,
                 }
             );
             const tjson2 = await tresponse2.json();
@@ -124,7 +124,7 @@ const seed = async () => {
                         'Client-ID': 'ggr8i4wd68qwqk6xahsj12kzt433y1',
                         Authorization: 'Bearer mc2pq9jvuwd6isn6apyqxhvi1o43ve',
                     },
-                    body: `fields name; where id= ${game.genres[0] ?? 0};`,
+                    body: `fields name; where id= ${game.genres?.[0] ?? 0};`,
                 }
             );
             const tjson2 = await tresponse2.json();
