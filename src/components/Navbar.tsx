@@ -126,8 +126,23 @@ class Navbar extends React.Component<any, NavbarState> {
                                 anchorEl={this.state.anchorEl}
                             >
                                 <MenuItem>
-                                    <Link to="/game/platform/playstation">
-                                        Playstation
+                                    <Link to="/game/platform/PS5">
+                                        Playstation 5
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/platform/PS4">
+                                        Playstation 4
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/platform/XONE">
+                                        Xbox One
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/platform/XSX">
+                                        Xbox Series X|S
                                     </Link>
                                 </MenuItem>
                             </Menu>
@@ -159,6 +174,18 @@ class Navbar extends React.Component<any, NavbarState> {
                             >
                                 <MenuItem>
                                     <Link to="/game/genre/action">Action</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/adventure">Adventure</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/puzzle">Puzzle</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/shooter">Shooter</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/rpg">RPG</Link>
                                 </MenuItem>
                             </Menu>
                             <Box

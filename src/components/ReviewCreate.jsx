@@ -37,6 +37,7 @@ const ReviewCreate = (props) => {
                 rating: rating,
                 gameId: props.gameId
             })
+            console.log(status, json);
             if(status === 200) {
                 handleClose();
             }
@@ -45,7 +46,7 @@ const ReviewCreate = (props) => {
             }
         }
         catch(error) {
-
+          console.log('caught an error');
         }
     }
 
