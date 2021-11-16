@@ -48,13 +48,13 @@ const seed = async () => {
                     'Content-Type': 'application/json',
                     Authorization: adminAuth.token,
                 }),
-                body: {
+                body: JSON.stringify({
                     game: {
                         title: game.name,
                         platform: 'PS5',
                         genre: genre === 'Role-Playing (RPG)' ? 'rpg' : genre.toLowerCase(),
                     },
-                },
+                }),
             });
         }
 
