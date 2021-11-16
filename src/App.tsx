@@ -30,6 +30,7 @@ class App extends React.Component<any , any> {
   }
   removeAuth = () => {
     this.setState({token: '', role: ''})
+    localStorage.clear();
   }
   componentDidMount() {
     // seed();
