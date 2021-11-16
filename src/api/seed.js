@@ -1,7 +1,5 @@
 import { createGame, createUser, loginUser } from '.';
 import APIURL from './environment';
-import logo from '../logo.png';
-import SelectInput from '@mui/material/Select/SelectInput';
 const seed = async () => {
     try {
         const { json } = await loginUser({
@@ -26,7 +24,6 @@ const seed = async () => {
             }
         );
         const tjson5 = await tresponse5.json();
-        console.log(tjson);
         for (const game of tjson5) {
             const tresponse2 = await fetch(
                 'https://efa-cors-anywhere.herokuapp.com/https://api.igdb.com/v4/genres',
@@ -181,6 +178,7 @@ const seed = async () => {
         //         const photoURL = results.secure_url;
     } catch (e) {
         console.log('seed exception');
+        console.log(e);
     }
 };
 // seed();
