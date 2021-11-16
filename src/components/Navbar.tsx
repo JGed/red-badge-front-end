@@ -173,9 +173,6 @@ class Navbar extends React.Component<any, NavbarState> {
                                 anchorEl={this.state.anchorEl}
                             >
                                 <MenuItem>
-                                    <Link to="/game/genre/action">Action</Link>
-                                </MenuItem>
-                                <MenuItem>
                                     <Link to="/game/genre/adventure">Adventure</Link>
                                 </MenuItem>
                                 <MenuItem>
@@ -186,6 +183,12 @@ class Navbar extends React.Component<any, NavbarState> {
                                 </MenuItem>
                                 <MenuItem>
                                     <Link to="/game/genre/rpg">RPG</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/platform">Platform</Link>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Link to="/game/genre/racing">Racing</Link>
                                 </MenuItem>
                             </Menu>
                             <Box
