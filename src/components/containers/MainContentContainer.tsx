@@ -16,6 +16,7 @@ class MainContentContainer extends React.Component<MainContentContainerProps> {
                     display: 'flex', 
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
+                    backgroundColor: '#EEEEEE',
                     py: 3
                 }}
             >
@@ -27,6 +28,7 @@ class MainContentContainer extends React.Component<MainContentContainerProps> {
                     flex: '1 1 auto',
                     display: 'flex',
                     flexDirection: 'column',
+                    backgroundColor: '#EEEEEE',
                     justifyContent: 'flex-start'
                 }}
             >
