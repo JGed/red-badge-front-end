@@ -38,7 +38,7 @@ const seed = async () => {
                 }
             );
             const tjson2 = await tresponse2.json();
-            const genre = tjson2[0].name;
+            const genre = tjson2[0]?.name;
             console.log(game, genre);
             await fetch(`${APIURL}/game/`, {
                 method: 'POST',
