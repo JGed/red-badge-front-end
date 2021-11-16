@@ -52,7 +52,7 @@ const seed = async () => {
                     game: {
                         title: game.name,
                         platform: 'PS5',
-                        genre: genre,
+                        genre: genre === 'Role-Playing (RPG)' ? 'rpg' : genre.toLowerCase(),
                     },
                 },
             });
