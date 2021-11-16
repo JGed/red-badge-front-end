@@ -33,7 +33,7 @@ class App extends React.Component<any , any> {
     localStorage.clear();
   }
   componentDidMount() {
-    // seed();
+    seed();
     if(localStorage.getItem('token')) this.setState({token: localStorage.getItem('token')});
     if(localStorage.getItem('role')) this.setState({role: localStorage.getItem('role')});
   }

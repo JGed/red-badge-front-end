@@ -24,7 +24,7 @@ class Admin extends React.Component {
         return (
             this.props.auth.role === 'admin' ?
             <MainContentContainer>
-                Admin
+                Work in Progress
             </MainContentContainer>
             :
             <Redirect to='/' />
