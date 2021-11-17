@@ -5,3 +5,4 @@ Users will be able to login or create an account.  From there they can search ga
 Users can create a review for each game, reviews are able to be reported.
 Moderators will have the ability to evaluate reports and determine if the review should be removed.
 
+deployed site - https://jbg-vg-reviews.herokuapp.com/
